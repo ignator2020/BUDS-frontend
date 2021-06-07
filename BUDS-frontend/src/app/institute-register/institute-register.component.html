@@ -1,0 +1,97 @@
+<div class="container">
+    <div class="row">
+
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6">
+            <div class="card">
+        <h1 class="heading">Institute Registration Form</h1>
+        
+        <form #regForm='ngForm' (ngSubmit)="Register(regForm)">
+            <!-- Success/error message card -->
+            <div id="success" class="text-center col-12" [class.d-none]='status=="none"'>
+                <div class='alert alert-warning' [class.d-none]='status!="connecting"'>
+                    <strong>Registering..</strong>
+                </div>
+                <div class='alert alert-success' [class.d-none]='status!="success"'>
+                    <strong>Successfully registered</strong>
+                </div>
+                <div class='alert alert-danger' [class.d-none]='status!="error"'>
+                    <strong>{{errorMsg}}</strong>
+                </div>
+            </div>
+            <!-- End of success/error message card -->
+            <div class="form-group">
+                <label for="iname">Name of the institution</label>
+                <input id="iname" type="text" class="form-control" placeholder="Institute Name" required
+                #iname='ngModel' [class.is-valid]='iname.valid' [class.is-invalid]='iname.invalid && iname.touched'
+                [(ngModel)]='institute.iname'/>
+                <p class='text-danger' [class.d-none]='iname.valid || iname.untouched'>Institute name can not be blank.</p>
+
+            </div>
+            <div class="form-group">
+                <label for="lsgi">Name of the LSGI</label>
+                <input id="lsgi" name="lsgi" type="text" class="form-control" placeholder="LSGI" required
+                #lsgi='ngModel'[class.is-valid]='lsgi.valid' [class.is-invalid]='lsgi.invalid && lsgi.touched'
+                [(ngModel)]='institute.lsgi'>
+                <p class='text-danger' [class.d-none]='lsgi.valid || lsgi.untouched'>LSGI name can not be blank.</p>
+
+            </div>
+       
+            <div class="form-group">
+                <label for="district">District</label>
+                <select class="form-control" name="district" required #district='ngModel' [(ngModel)]='institute.district'>
+                    <option value="Kasargod">Kasargod</option>
+                    <option value="Kannur">Kannur</option>
+                    <option value="Wayanad">Wayanad</option>
+                    <option value="Kozhikode">Kozhikode</option>
+                    <option value="Malappuram">Malappuram</option>
+                    <option value="Palakkad">Palakkad</option>
+                    <option value="Thrissur">Thrissur</option>
+                    <option value="Ernakulam">Ernakulam</option>
+                    <option value="Idukki">Idukki</option>
+                    <option value="Kottayam">Kottayam</option>
+                    <option value="Pathanamthitta">Pathanamthitta</option>
+                    <option value="Alappuzha">Alappuzha</option>
+                    <option value="Kottayam">Kottayam</option>
+                    <option value="Thiruvananthapuram">Thiruvananthapuram</option>
+                </select>
+                <!-- Show validation message when user leaves these dropdown inputs unselected and enter a value in next input field(email)  -->
+                <p class='text-danger' [class.d-none]='district.valid || (district.untouched && district.pristine && (district.invalid))'>
+                    Please select a district.
+                </p>
+            </div>
+            <div class="form-group">
+                <input type="text" minlength="10" maxlength="10" class="form-control" placeholder="Phone" name="phone" required
+                    #phone='ngModel' [class.is-valid]='phone.valid' [class.is-invalid]='phone.invalid && phone.touched' 
+                    [(ngModel)]='institute.phone'/>
+                <p class='text-danger' [class.d-none]='phone.valid || phone.untouched'>Please enter a valid 10 digit phone number.</p>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input id="email" name="email" type="text" class="form-control" placeholder="Email" required pattern='^[a-z0-9.%+]+@[a-z0-9.-]+\.[a-z]{2,4}'
+                #email='ngModel' [class.is-valid]='email.valid' [class.is-invalid]='email.invalid && email.touched' 
+                [(ngModel)]='institute.email'>
+                <p class='text-danger' [class.d-none]='email.valid || email.untouched'>Please enter a valid email.</p>
+            </div>
+            
+            <div class="form-group">
+                <label for="buds">BUDS School/BRC</label>
+                <select class="form-control" name="buds" required #buds='ngModel' [(ngModel)]='institute.buds'>
+                    <option value="BUDS">BUDS School</option>
+                    <option value="BRC">BRC</option>
+                </select>
+                <!-- Show validation message when user leaves these dropdown inputs unselected and enter a value in next input field(skills)  -->
+                <p class='text-danger' [class.d-none]='buds.valid || (buds.untouched && buds.pristine && (buds.invalid))'>
+                    Please select an option.
+                </p>
+            </div>
+            <br>
+            <div class="align-center">
+                <button type="submit" class="btn btn-default btnclr" id="Register">Register</button>
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+</div>

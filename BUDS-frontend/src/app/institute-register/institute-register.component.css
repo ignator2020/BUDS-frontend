@@ -1,0 +1,25 @@
+.heading{
+    color: purple;
+    margin-bottom: 5%;
+    text-shadow: 2px 2px 2px purple;
+}
+.card{
+    border: 1px solid;
+    width: 100%;
+    height: 95%;
+    padding: 10% 5%;
+    margin-top: 10%;   
+    background-color: plum;
+    box-shadow: 5px 10px 10px purple;
+    color: purple;
+}
+.btnclr{
+    background-color: purple;
+    color: white;
+}
+.align-center{
+    align-items: center;
+}
+.align-center button{
+    width: 100%;
+}
