@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-institute-register',
@@ -18,13 +19,18 @@ export class InstituteRegisterComponent implements OnInit {
 
   status = 'none';
   errorMsg = '';
+  
 
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
   }
 
+  // public districts = ['Kasargod','Kannur','Wayanad','Kozhikode','Malappuram','Palakkad','Thrissur','Ernakulam',
+  //                     'Idukki','Kottayam','Pathanamthitta','Alappuzha','Kollam','Thiruvananthapuram'];
+
   Register(regForm){
-    console.log(regForm);
+    alert("You have registered successfully");
+    this.router.navigate(['/']);
   }
 }

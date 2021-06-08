@@ -22,7 +22,7 @@
             <!-- End of success/error message card -->
             <div class="form-group">
                 <label for="iname">Name of the institution</label>
-                <input id="iname" type="text" class="form-control" placeholder="Institute Name" required
+                <input id="iname" name="iname" type="text" class="form-control" placeholder="Institute Name" required
                 #iname='ngModel' [class.is-valid]='iname.valid' [class.is-invalid]='iname.invalid && iname.touched'
                 [(ngModel)]='institute.iname'/>
                 <p class='text-danger' [class.d-none]='iname.valid || iname.untouched'>Institute name can not be blank.</p>
@@ -39,8 +39,11 @@
        
             <div class="form-group">
                 <label for="district">District</label>
-                <select class="form-control" name="district" required #district='ngModel' [(ngModel)]='institute.district'>
-                    <option value="Kasargod">Kasargod</option>
+                <select class="form-control" name="district" required #district='ngModel'
+                [class.is-valid]='district.valid' [class.is-invalid]='district.invalid && district.touched'
+                 [(ngModel)]='institute.district'>
+                    <option value="" selected>District</option>
+                    <!-- <option *ngFor='let x of districts' value='{{x.districts}}'>{{x.districts}}</option> -->
                     <option value="Kannur">Kannur</option>
                     <option value="Wayanad">Wayanad</option>
                     <option value="Kozhikode">Kozhikode</option>
@@ -61,6 +64,7 @@
                 </p>
             </div>
             <div class="form-group">
+                <label for="phone">Phone Number</label>
                 <input type="text" minlength="10" maxlength="10" class="form-control" placeholder="Phone" name="phone" required
                     #phone='ngModel' [class.is-valid]='phone.valid' [class.is-invalid]='phone.invalid && phone.touched' 
                     [(ngModel)]='institute.phone'/>
@@ -77,7 +81,9 @@
             
             <div class="form-group">
                 <label for="buds">BUDS School/BRC</label>
-                <select class="form-control" name="buds" required #buds='ngModel' [(ngModel)]='institute.buds'>
+                <select class="form-control" name="buds" required #buds='ngModel'
+                [class.is-valid]='buds.valid' [class.is-invalid]='buds.invalid && buds.touched'
+                 [(ngModel)]='institute.buds'>
                     <option value="BUDS">BUDS School</option>
                     <option value="BRC">BRC</option>
                 </select>
