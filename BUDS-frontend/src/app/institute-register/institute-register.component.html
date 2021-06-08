@@ -84,6 +84,7 @@
                 <select class="form-control" name="buds" required #buds='ngModel'
                 [class.is-valid]='buds.valid' [class.is-invalid]='buds.invalid && buds.touched'
                  [(ngModel)]='institute.buds'>
+                 <option value="" selected>Select</option>
                     <option value="BUDS">BUDS School</option>
                     <option value="BRC">BRC</option>
                 </select>
@@ -94,7 +95,7 @@
             </div>
             <br>
             <div class="align-center">
-                <button type="submit" class="btn btn-default btnclr" id="Register">Register</button>
+                <button type="submit" class="btn btn-default btnclr" id="Register" [disabled]="regForm.form.invalid">Register</button>
             </div>
         </form>
     </div>
