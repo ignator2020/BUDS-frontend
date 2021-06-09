@@ -31,6 +31,7 @@ export class InstituteRegisterComponent implements OnInit {
 
   Register(regForm){
     alert("You have registered successfully");
+    
     this.router.navigate(['/thankyou']);
   }
 }
