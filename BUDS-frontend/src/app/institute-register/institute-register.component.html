@@ -23,7 +23,7 @@
                     <input id="name" name="name" type="text" class="form-control" placeholder="Enter name of the institution" required
                     #name='ngModel' [class.is-valid]='name.valid' [class.is-invalid]='name.invalid && name.touched'
                     [(ngModel)]='institute.name'/>
-                    <p class='text-danger' [class.d-none]='name.valid || name.untouched'>Institute name can not be blank.</p>
+                    <small class='text-danger' [class.d-none]='name.valid || name.untouched'>Institute name can not be blank.</small>
                 </div>
                 <!-- Institute type buds/brc -->
                 <div class="form-group">
@@ -35,9 +35,9 @@
                         <option value="BUDS School">BUDS School</option>
                         <option value="BRC">BRC</option>
                     </select>
-                    <p class='text-danger' [class.d-none]='type.valid || (type.untouched && (lsgi.invalid))'>
+                    <small class='text-danger' [class.d-none]='type.valid || (type.untouched && (lsgi.invalid))'>
                         Please select institute type.
-                    </p>
+                    </small>
                 </div>
                 <!-- District -->
                 <div class="form-group">
@@ -49,9 +49,9 @@
                         <option *ngFor='let x of districts' value='{{x}}'>{{x}}</option>
                     </select>
                     <!-- Show validation message when user leaves these dropdown inputs unselected and enter a value in next input field(lsgi)  -->
-                    <p class='text-danger' [class.d-none]='district.valid || (district.untouched && (lsgi.invalid))'>
+                    <small class='text-danger' [class.d-none]='district.valid || (district.untouched && (lsgi.invalid))'>
                         Please select a district.
-                    </p>
+                    </small>
                 </div>
                 <!-- LSGI -->
                 <div class="form-group">
@@ -59,7 +59,7 @@
                     <input id="lsgi" name="lsgi" type="text" class="form-control" placeholder="Enter name of LSGI" required
                     #lsgi='ngModel'[class.is-valid]='lsgi.valid' [class.is-invalid]='lsgi.invalid && lsgi.touched'
                     [(ngModel)]='institute.lsgi'>
-                    <p class='text-danger' [class.d-none]='lsgi.valid || lsgi.untouched'>LSGI name can not be blank.</p>
+                    <small class='text-danger' [class.d-none]='lsgi.valid || lsgi.untouched'>LSGI name can not be blank.</small>
                 </div>
                 <!-- email -->
                 <div class="form-group">
@@ -67,7 +67,7 @@
                     <input id="email" name="email" type="text" class="form-control" placeholder="Enter email id" required pattern='^[a-z0-9.%+]+@[a-z0-9.-]+\.[a-z]{2,4}'
                     #email='ngModel' [class.is-valid]='email.valid' [class.is-invalid]='email.invalid && email.touched' 
                     [(ngModel)]='institute.email'>
-                    <p class='text-danger' [class.d-none]='email.valid || email.untouched'>Please enter a valid email.</p>
+                    <small class='text-danger' [class.d-none]='email.valid || email.untouched'>Please enter a valid email.</small>
                 </div>
                 <!-- phone -->
                 <div class="form-group">
@@ -75,7 +75,7 @@
                     <input type="text" minlength="10" maxlength="10" class="form-control" placeholder="Enter phone number" name="phone" required
                         #phone='ngModel' [class.is-valid]='phone.valid' [class.is-invalid]='phone.invalid && phone.touched' 
                         [(ngModel)]='institute.phone'/>
-                    <p class='text-danger' [class.d-none]='phone.valid || phone.untouched'>Please enter a valid 10 digit phone number.</p>
+                    <small class='text-danger' [class.d-none]='phone.valid || phone.untouched'>Please enter a valid 10 digit phone number.</small>
                 </div>
                 <br>
                 <div class="align-center">
