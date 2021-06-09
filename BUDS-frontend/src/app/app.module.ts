@@ -8,12 +8,14 @@ import { AppComponent } from './app.component';
 import { InstituteRegisterComponent } from './institute-register/institute-register.component';
 import { ThankyouComponent } from './thankyou/thankyou.component';
 import { AuthService } from './auth.service';
+import { StudentaddComponent } from './studentadd/studentadd.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     InstituteRegisterComponent,
-    ThankyouComponent
+    ThankyouComponent,
+    StudentaddComponent
   ],
   imports: [
     BrowserModule,

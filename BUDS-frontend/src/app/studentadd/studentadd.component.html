@@ -1,0 +1,125 @@
+<div class="container d-flex justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <h1 class="heading text-center">Add Student</h1>
+            
+            <form #studentForm='ngForm' (ngSubmit)="addStudent()">
+                <!-- Success/error message card -->
+                <div id="success" class="text-center col-12" [class.d-none]='status=="none"'>
+                    <div class='alert alert-warning' [class.d-none]='status!="connecting"'>
+                        <strong>Registering..</strong>
+                    </div>
+                    <div class='alert alert-success' [class.d-none]='status!="success"'>
+                        <strong>Successfully registered</strong>
+                    </div>
+                    <div class='alert alert-danger' [class.d-none]='status!="error"'>
+                        <strong>{{errorMsg}}</strong>
+                    </div>
+                </div>
+                <!-- End of success/error message card -->
+                <!-- Name -->
+                <div class="form-group">
+                    <label for="name">Name of the student</label>
+                    <input id="name" name="name" type="text" class="form-control" placeholder="Enter name of the student" required
+                    #name='ngModel' [class.is-valid]='name.valid' [class.is-invalid]='name.invalid && name.touched'
+                    [(ngModel)]='students.name'/>
+                    <small class='text-danger' [class.d-none]='name.valid || name.untouched'>Student name can not be blank.</small>
+                </div>
+               <!-- Date of Birth -->
+                <div class="form-group">
+                    <label for="dob">Date of birth</label>
+                    <input id="dob" name="dob" type="date" class="form-control" placeholder="Date of Birth of the student" required
+                    #dob='ngModel' [class.is-valid]='dob.valid' [class.is-invalid]='dob.invalid && dob.touched'
+                    [(ngModel)]='students.dob'/>
+                    <small class='text-danger' [class.d-none]='dob.valid || dob.untouched'>Date of Birth can not be blank.</small>
+                </div>
+
+                <!-- Gender -->
+                <div class="form-group">
+                    <label for="gender">Gender</label>
+                    <select class="form-control" name="gender" required #gender='ngModel'
+                    [class.is-valid]='gender.valid' [class.is-invalid]='gender.invalid && gender.touched'
+                    [(ngModel)]='students.gender'>
+                    <option value="" selected>Gender</option>
+                        <option value="Boy">Boy</option>
+                        <option value="Girl">Girl</option>
+                    </select>
+                    <small class='text-danger' [class.d-none]='gender.valid || (gender.untouched && (dob.invalid))'>
+                        Please select the gender.
+                    </small>
+                </div>
+
+                <!-- Parent name -->
+                <div class="form-group">
+                    <label for="parent">Name of the parent</label>
+                    <input id="parent" name="parent" type="text" class="form-control" placeholder="Enter name of the parent" required
+                    #parent='ngModel' [class.is-valid]='parent.valid' [class.is-invalid]='parent.invalid && parent.touched'
+                    [(ngModel)]='students.parent'/>
+                    <small class='text-danger' [class.d-none]='parent.valid || parent.untouched'>Parent name can not be blank.</small>
+                </div>
+
+                <!-- Aadhar number -->
+                <div class="form-group">
+                    <label for="aadhar">Aadhar number of student</label>
+                    <input id="aadhar" name="aadhar" type="text" class="form-control" placeholder="Aadhar number" required
+                    #aadhar='ngModel' [class.is-valid]='aadhar.valid' [class.is-invalid]='aadhar.invalid && aadhar.touched'
+                    [(ngModel)]='students.aadhar'/>
+                    <small class='text-danger' [class.d-none]='aadhar.valid || aadhar.untouched'>Aadhar number can not be blank.</small>
+                </div>
+
+                <!-- Ration Card -->
+                <div class="form-group">
+                    <label for="ration">Colour of Ration Card</label>
+                    <input id="ration" name="ration" type="text" class="form-control" placeholder="Ration Card Colour" required
+                    #ration='ngModel'[class.is-valid]='ration.valid' [class.is-invalid]='ration.invalid && ration.touched'
+                    [(ngModel)]='students.ration'>
+                    <small class='text-danger' [class.d-none]='ration.valid || ration.untouched'>Ration card colour should not be blank</small>
+                </div>
+
+                <!-- Disability catered -->
+                <div class="form-group">
+                    <label for="disability">Disability Catered</label>
+                    <select class="form-control" name="disability" required #disability='ngModel'
+                    [class.is-valid]='disability.valid' [class.is-invalid]='disability.invalid && disability.touched'
+                    [(ngModel)]='students.disability'>
+                        <option value="" selected>Disability Catered</option>
+                        <option *ngFor='let x of disabilities' value='{{x}}'>{{x}}</option>
+                    </select>
+                    <!-- Show validation message when user leaves these dropdown inputs unselected and enter a value in next input field(percent)  -->
+                    <small class='text-danger' [class.d-none]='disability.valid || (disability.untouched && (percent.invalid))'>
+                        Please select a disability.
+                    </small>
+                    <!-- This div will be shown only if disability catered is others -->
+                    <div [class.d-none]='students.disability!="others"'>
+                        <!-- required = true if disability == others else required = false -->
+                        <input type="text" class="form-control" placeholder="Specify the disability of the student *" name="othDisability" [required]='students.disability=="others"'
+                            #othDisability='ngModel' [class.is-invalid]='othDisability.invalid && othDisability.touched'
+                            [(ngModel)]='otherDisability'/>
+                        <p class='text-danger' [class.d-none]='othDisability.valid || othDisability.untouched'>Specify the disability.</p>
+                    </div>
+                </div>
+
+                <!-- Disability percentage -->
+                <div class="form-group">
+                    <label for="percent">Percentage of disability</label>
+                    <input id="percent" name="percent" type="text" class="form-control" placeholder="Enter percentage of disability" required
+                    #percent='ngModel' [class.is-valid]='percent.valid' [class.is-invalid]='percent.invalid && percent.touched' 
+                    [(ngModel)]='students.percent'>
+                    <small class='text-danger' [class.d-none]='percent.valid || percent.untouched'>Please enter the percentage of disability</small>
+                </div>
+                <!-- phone -->
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="text" minlength="10" maxlength="10" class="form-control" placeholder="Enter phone number" name="phone" required
+                        #phone='ngModel' [class.is-valid]='phone.valid' [class.is-invalid]='phone.invalid && phone.touched' 
+                        [(ngModel)]='students.phone'/>
+                    <p class='text-danger' [class.d-none]='phone.valid || phone.untouched'>Please enter a valid 10 digit phone number.</p>
+                </div>
+                <br>
+                <div class="align-center">
+                    <button type="submit" class="btn btn-default btnclr" id="register" [disabled]="studentForm.form.invalid">Add Student</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
