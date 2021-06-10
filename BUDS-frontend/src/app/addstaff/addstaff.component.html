@@ -1,0 +1,129 @@
+<div class="container d-flex justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <h1 class="heading text-center">Add Student</h1>
+            
+            <form #staffForm='ngForm' (ngSubmit)="addStaff()">
+                <!-- Success/error message card -->
+                <div id="success" class="text-center col-12" [class.d-none]='status=="none"'>
+                    <div class='alert alert-warning' [class.d-none]='status!="connecting"'>
+                        <strong>Registering..</strong>
+                    </div>
+                    <div class='alert alert-success' [class.d-none]='status!="success"'>
+                        <strong>Successfully registered</strong>
+                    </div>
+                    <div class='alert alert-danger' [class.d-none]='status!="error"'>
+                        <strong>{{errorMsg}}</strong>
+                    </div>
+                </div>
+                <!-- End of success/error message card -->
+
+                <!-- Staff type -->
+                <div class="form-group">
+                    <label for="type">Staff type:</label>
+                    <select class="form-control" name="type" required #type='ngModel'
+                    [class.is-valid]='type.valid' [class.is-invalid]='type.invalid && type.touched'
+                    [(ngModel)]='staff.type'>
+                        <option value="" selected>Staff Type</option>
+                        <option *ngFor='let x of staffs' value='{{x}}'>{{x}}</option>
+                    </select>
+                    <!-- Show validation message when user leaves these dropdown inputs unselected and enter a value in next input field  -->
+                    <small class='text-danger' [class.d-none]='type.valid || (type.untouched && (type.invalid))'>
+                        Please select a staff type.
+                    </small>
+                </div>
+
+                <!-- Name of the staff-->
+                <div class="form-group">
+                    <label for="name">Name :</label>
+                    <input id="name" name="name" type="text" class="form-control" placeholder="Enter name of the staff" required
+                    #name='ngModel' [class.is-valid]='name.valid' [class.is-invalid]='name.invalid && name.touched'
+                    [(ngModel)]='staff.name'/>
+                    <small class='text-danger' [class.d-none]='name.valid || name.untouched'>Staff name can not be blank.</small>
+                </div>
+
+                <!-- Name of buds/lsgi -->
+                <div class="form-group">
+                    <label for="iname">Name of BUDS/LSGI:</label>
+                    <input id="iname" name="iname" type="text" class="form-control" placeholder="Enter name of BUDS/LSGI" required
+                    #iname='ngModel' [class.is-valid]='iname.valid' [class.is-invalid]='iname.invalid && iname.touched'
+                    [(ngModel)]='staff.iname'/>
+                    <small class='text-danger' [class.d-none]='iname.valid || iname.untouched'>BUDS/LSGI name can not be blank.</small>
+                </div>
+
+               <!-- Designation: Only seen if staff is teacher or therapist -->
+               <div class="form-group">
+                    <label for="designation">Designation</label>
+                    <input type="text" class="form-control" placeholder="Specify the designation *" name="designation" 
+                        #designation='ngModel' [class.is-invalid]='designation.invalid && designation.touched'
+                        [(ngModel)]='staff.designation'/>
+                    <small class='text-danger' [class.d-none]='designation.valid || designation.untouched'>Specify the designation.</small>
+               </div>
+
+               <!-- Interval of visit: Only seen if staff is Therapist -->
+                <div class="form-group">
+                    <label for="interval">Interval of visit</label>
+                    <input type="number" class="form-control" placeholder="Interval of visit *" name="interval"
+                        #interval='ngModel'  [class.is-invalid]='interval.invalid && interval.touched'
+                        [(ngModel)]='staff.interval'/>
+                    <small class='text-danger' [class.d-none]='interval.valid || interval.untouched'>Specify the interval of visit.</small>
+                </div>
+
+               <!-- Date of Birth -->
+                <div class="form-group">
+                    <label for="dob">Date of birth</label>
+                    <input id="dob" name="dob" type="date" class="form-control" placeholder="Date of Birth of the staff" required
+                    #dob='ngModel' [class.is-valid]='dob.valid' [class.is-invalid]='dob.invalid && dob.touched'
+                    [(ngModel)]='staff.dob'/>
+                    <small class='text-danger' [class.d-none]='dob.valid || dob.untouched'>Date of Birth can not be blank.</small>
+                </div>
+
+                <!-- phone -->
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="text" minlength="10" maxlength="10" class="form-control" placeholder="Enter phone number" name="phone" required
+                        #phone='ngModel' [class.is-valid]='phone.valid' [class.is-invalid]='phone.invalid && phone.touched' 
+                        [(ngModel)]='staff.phone'/>
+                    <small class='text-danger' [class.d-none]='phone.valid || phone.untouched'>Please enter a valid 10 digit phone number.</small>
+                </div>
+
+                <!-- RCI qualification : Required only if staff is a teacher -->
+                <div class="form-group">
+                    <label for="rci">RCI Qualified?</label>
+                    <select class="form-control" name="rci" #rci='ngModel' 
+                    [class.is-valid]='rci.valid' [class.is-invalid]='rci.invalid && rci.touched'
+                    [(ngModel)]='staff.rci'>
+                    <option value="" selected>Select</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                    </select>
+                    <small class='text-danger' [class.d-none]='rci.valid || rci.untouched'>Specify whether RCI Qualified</small>
+                </div>
+
+                
+               <!-- Educational Qualification -->
+                <div class="form-group">
+                    <label for="qualification">Educational Qualification</label>
+                    <input id="qualification" name="qualification" type="text" class="form-control" placeholder="Enter the qualification" required
+                    #qualification='ngModel' [class.is-valid]='qualification.valid' [class.is-invalid]='qualification.invalid && qualification.touched'
+                    [(ngModel)]='staff.qualification'/>
+                    <small class='text-danger' [class.d-none]='qualification.valid || qualification.untouched'>Educational qualification can not be blank.</small>
+                </div>
+                
+                <!-- Present Salary -->
+                <div class="form-group">
+                    <label for="salary">Present Salary/Daily Wage</label>
+                    <input id="salary" name="salary" type="text" class="form-control" placeholder="Enter the present salary" required
+                    #salary='ngModel' [class.is-valid]='salary.valid' [class.is-invalid]='salary.invalid && salary.touched'
+                    [(ngModel)]='staff.salary'/>
+                    <small class='text-danger' [class.d-none]='salary.valid || salary.untouched'>Present salary cannot be blank</small>
+                </div>
+
+                <br>
+                <div class="align-center">
+                    <button type="submit" class="btn btn-default btnclr" id="register" [disabled]="staffForm.form.invalid">Add Staff</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

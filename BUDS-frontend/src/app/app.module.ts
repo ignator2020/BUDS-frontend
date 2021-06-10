@@ -10,6 +10,7 @@ import { ThankyouComponent } from './thankyou/thankyou.component';
 import { AuthService } from './auth.service';
 import { StudentaddComponent } from './studentadd/studentadd.component';
 import { OtherdetailsComponent } from './otherdetails/otherdetails.component';
+import { AddstaffComponent } from './addstaff/addstaff.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { OtherdetailsComponent } from './otherdetails/otherdetails.component';
     InstituteRegisterComponent,
     ThankyouComponent,
     StudentaddComponent,
-    OtherdetailsComponent
+    OtherdetailsComponent,
+    AddstaffComponent
   ],
   imports: [
     BrowserModule,
