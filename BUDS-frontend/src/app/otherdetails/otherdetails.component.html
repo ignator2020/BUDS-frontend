@@ -1,0 +1,146 @@
+
+<div class="container d-flex justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <h1 class="heading text-center">Add Details of Institute</h1>
+            
+            <form #otherDetailsForm='ngForm' (ngSubmit)="addDetails()">
+                <!-- Success/error message card -->
+                <div id="success" class="text-center col-12" [class.d-none]='status=="none"'>
+                    <div class='alert alert-warning' [class.d-none]='status!="connecting"'>
+                        <strong>Registering..</strong>
+                    </div>
+                    <div class='alert alert-success' [class.d-none]='status!="success"'>
+                        <strong>Successfully registered</strong>
+                    </div>
+                    <div class='alert alert-danger' [class.d-none]='status!="error"'>
+                        <strong>{{errorMsg}}</strong>
+                    </div>
+                </div>
+                <!-- End of success/error message card -->
+
+                <!-- Building Area -->
+                <div class="form-group">
+                    <label for="area">Building Area</label>
+                    <input id="area" name="area" type="text" class="form-control" placeholder="Enter the building area" required
+                    #area='ngModel' [class.is-valid]='area.valid' [class.is-invalid]='area.invalid && area.touched'
+                    [(ngModel)]='otherDetails.area'/>
+                    <small class='text-danger' [class.d-none]='area.valid || area.untouched'>Building area cannot be blank.</small>
+                </div>
+
+                <!-- Total Land available -->
+                <div class="form-group">
+                    <label for="total">Total Land Available</label>
+                    <input id="total" name="total" type="text" class="form-control" placeholder="Enter the total land" required
+                    #total='ngModel' [class.is-valid]='total.valid' [class.is-invalid]='total.invalid && total.touched'
+                    [(ngModel)]='otherDetails.total'/>
+                    <small class='text-danger' [class.d-none]='total.valid || total.untouched'>Total land available cannot be blank.</small>
+                </div>
+
+                <!-- Own/Rented Building -->
+                <div class="form-group">
+                    <label for="orbg">Own/Rented Building</label>
+                    <select class="form-control" name="orbg" required #orbg='ngModel'
+                    [class.is-valid]='orbg.valid' [class.is-invalid]='orbg.invalid && orbg.touched'
+                    [(ngModel)]='otherDetails.orbg'>
+                    <option value="" selected>Select</option>
+                        <option value="Own">Own</option>
+                        <option value="Rented">Rented</option>
+                    </select>
+                    <small class='text-danger' [class.d-none]='orbg.valid || orbg.untouched'>
+                        Please select an option.
+                    </small>
+                </div>
+
+                <!-- Number of classrooms -->
+                <div class="form-group">
+                    <label for="cls">Number of classrooms</label>
+                    <input id="cls" name="cls" type="number" class="form-control" placeholder="Enter the number of classrooms" required
+                    #cls='ngModel' [class.is-valid]='cls.valid' [class.is-invalid]='cls.invalid && cls.touched'
+                    [(ngModel)]='otherDetails.cls'/>
+                    <small class='text-danger' [class.d-none]='cls.valid || cls.untouched'>Number of classrooms cannot be blank.</small>
+                </div>
+
+                <!-- Number of toilets -->
+                <div class="form-group">
+                    <label for="tlts">Number of toilets</label>
+                    <input id="tlts" name="tlts" type="number" class="form-control" placeholder="Enter the number of toilets" required
+                    #tlts='ngModel' [class.is-valid]='tlts.valid' [class.is-invalid]='tlts.invalid && tlts.touched'
+                    [(ngModel)]='otherDetails.tlts'/>
+                    <small class='text-danger' [class.d-none]='tlts.valid || tlts.untouched'>Number of toilets cannot be blank.</small>
+                </div>
+
+                <!-- Number of differently friendly toilets -->
+                <div class="form-group">
+                    <label for="dftlts">Number of differently friendly toilets</label>
+                    <input id="dftlts" name="dftlts" type="number" class="form-control" placeholder="Enter the number of differently friendly toilets" required
+                    #dftlts='ngModel' [class.is-valid]='dftlts.valid' [class.is-invalid]='dftlts.invalid && dftlts.touched'
+                    [(ngModel)]='otherDetails.dftlts'/>
+                    <small class='text-danger' [class.d-none]='dftlts.valid || dftlts.untouched'>Number of differently friendly toilets cannot be blank.</small>
+                </div>
+
+                <!-- Smart Class -->
+                <div class="form-group">
+                    <label for="smart">Smart class available?</label>
+                    <select class="form-control" name="smart" required #smart='ngModel'
+                    [class.is-valid]='smart.valid' [class.is-invalid]='smart.invalid && smart.touched'
+                    [(ngModel)]='otherDetails.smart'>
+                    <option value="" selected>Select</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                    <small class='text-danger' [class.d-none]='smart.valid || smart.untouched'>
+                        Please select an option.
+                    </small>
+                </div>
+
+                <!-- Vehicle -->
+                <div class="form-group">
+                    <label for="vehicle">Vehicles available?</label>
+                    <select class="form-control" name="vehicle" required #vehicle='ngModel'
+                    [class.is-valid]='vehicle.valid' [class.is-invalid]='vehicle.invalid && vehicle.touched'
+                    [(ngModel)]='otherDetails.vehicle'>
+                    <option value="" selected>Select</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                    <small class='text-danger' [class.d-none]='vehicle.valid || vehicle.untouched'>
+                        Please select an option.
+                    </small>
+                </div>
+                    
+                    <!-- This div will be shown only if vehicle is available -->
+                    <!-- <div [class.d-none]='otherDetails.vehicle!="No"' *ngIf="otherDetails.vehicle == 'Yes'"> -->
+                        <!-- required = true if availability == yes else required = false -->
+                        <div class="form-group">
+                            <label for="ownRented">Own/Rented?</label>
+                            <select class="form-control" name="ownRented" #ownRented='ngModel'
+                            [class.is-valid]='ownRented.valid' [class.is-invalid]='ownRented.invalid && ownRented.touched'
+                            [(ngModel)]='otherDetails.ownRented'>
+                            <option value="" selected>Select</option>
+                                <option value="Own">Own</option>
+                                <option value="Rented">Rented</option>
+                            </select>
+                            <!-- <small class='text-danger' [class.d-none]='ownRented.valid || ownRented.untouched'>
+                                Please select an option.
+                            </small> -->
+                        </div>
+
+                        <!-- Number of vehicles -->
+                        <div class="form-group">
+                            <label for="vehNum">Number of vehicles</label>
+                            <input id="vehNum" name="vehNum" type="number" class="form-control" placeholder="Enter the number of vehicles"
+                            #vehNum='ngModel' [class.is-valid]='vehNum.valid' [class.is-invalid]='vehNum.invalid && vehNum.touched'
+                            [(ngModel)]='otherDetails.vehNum'/>
+                            <!-- <small class='text-danger' [class.d-none]='vehNum.valid || vehNum.untouched'>Number of toilets cannot be blank.</small> -->
+                        </div>
+               
+           
+                <br>
+                <div class="align-center">
+                    <button type="submit" class="btn btn-default btnclr" id="register" [disabled]="otherDetailsForm.form.invalid">Add Details</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

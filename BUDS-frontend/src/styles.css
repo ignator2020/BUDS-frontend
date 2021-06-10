@@ -2,6 +2,12 @@
 @import "~bootstrap/dist/css/bootstrap.min.css";
 
 /* Form Styles */
+.heading{
+    color: whitesmoke;
+    margin-bottom: 5%;
+    text-shadow: 2px 2px 2px purple;
+    /* https://www.eggradients.com/category/pink-purple-gradient */
+}
 
 .card{
     border: 1px solid;
