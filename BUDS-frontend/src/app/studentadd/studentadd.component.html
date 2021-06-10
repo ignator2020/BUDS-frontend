@@ -89,11 +89,12 @@
                     <small class='text-danger' [class.d-none]='disability.valid || (disability.untouched && (percent.invalid))'>
                         Please select a disability.
                     </small>
+                    <br>
                     <!-- This div will be shown only if disability catered is others -->
-                    <div [class.d-none]='students.disability!="others"'>
+                    <div [class.d-none]='students.disability!="Others"' *ngIf="students.disability == 'Others'">
                         <!-- required = true if disability == others else required = false -->
-                        <input type="text" class="form-control" placeholder="Specify the disability of the student *" name="othDisability" [required]='students.disability=="others"'
-                            #othDisability='ngModel' [class.is-invalid]='othDisability.invalid && othDisability.touched'
+                        <input type="text" class="form-control" placeholder="Specify the disability of the student *" name="othDisability" [required]='students.disability=="Others"'
+                            #othDisability='ngModel' ngModel [class.is-invalid]='othDisability.invalid && othDisability.touched'
                             [(ngModel)]='otherDisability'/>
                         <p class='text-danger' [class.d-none]='othDisability.valid || othDisability.untouched'>Specify the disability.</p>
                     </div>
