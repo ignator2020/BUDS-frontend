@@ -96,7 +96,7 @@
                         <input type="text" class="form-control" placeholder="Specify the disability of the student *" name="othDisability" [required]='students.disability=="Others"'
                             #othDisability='ngModel' ngModel [class.is-invalid]='othDisability.invalid && othDisability.touched'
                             [(ngModel)]='otherDisability'/>
-                        <p class='text-danger' [class.d-none]='othDisability.valid || othDisability.untouched'>Specify the disability.</p>
+                        <small class='text-danger' [class.d-none]='othDisability.valid || othDisability.untouched'>Specify the disability.</small>
                     </div>
                 </div>
 
