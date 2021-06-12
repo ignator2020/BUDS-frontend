@@ -11,6 +11,8 @@ import { AuthService } from './auth.service';
 import { StudentaddComponent } from './studentadd/studentadd.component';
 import { OtherdetailsComponent } from './otherdetails/otherdetails.component';
 import { AddstaffComponent } from './addstaff/addstaff.component';
+import { InstituteHomeComponent } from './institute-home/institute-home.component';
+import { StatisticshomeComponent } from './statisticshome/statisticshome.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { AddstaffComponent } from './addstaff/addstaff.component';
     ThankyouComponent,
     StudentaddComponent,
     OtherdetailsComponent,
-    AddstaffComponent
+    AddstaffComponent,
+    InstituteHomeComponent,
+    StatisticshomeComponent
   ],
   imports: [
     BrowserModule,
