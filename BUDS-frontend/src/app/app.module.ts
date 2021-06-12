@@ -13,6 +13,16 @@ import { OtherdetailsComponent } from './otherdetails/otherdetails.component';
 import { AddstaffComponent } from './addstaff/addstaff.component';
 import { InstituteHomeComponent } from './institute-home/institute-home.component';
 import { StatisticshomeComponent } from './statisticshome/statisticshome.component';
+import { ImagecontainerComponent } from './imagecontainer/imagecontainer.component';
+import { CookComponent } from './cook/cook.component';
+import { DriverComponent } from './driver/driver.component';
+import { HeaderComponent } from './header/header.component';
+import { HelperComponent } from './helper/helper.component';
+import { OthersComponent } from './others/others.component';
+import { StaffdetailsComponent } from './staffdetails/staffdetails.component';
+import { StudentsComponent } from './students/students.component';
+import { TeacherComponent } from './teacher/teacher.component';
+import { TherapistComponent } from './therapist/therapist.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +33,17 @@ import { StatisticshomeComponent } from './statisticshome/statisticshome.compone
     OtherdetailsComponent,
     AddstaffComponent,
     InstituteHomeComponent,
-    StatisticshomeComponent
+    StatisticshomeComponent,
+    ImagecontainerComponent,
+    CookComponent,
+    DriverComponent,
+    HeaderComponent,
+    HelperComponent,
+    OthersComponent,
+    StaffdetailsComponent,
+    StudentsComponent,
+    TeacherComponent,
+    TherapistComponent
   ],
   imports: [
     BrowserModule,

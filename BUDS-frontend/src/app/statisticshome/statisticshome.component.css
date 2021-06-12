@@ -1,0 +1,46 @@
+.container{
+    box-sizing: border-box;
+    flex-direction: column;
+    padding: 30px;
+    width:150%;
+    /* background-image: url("https://www.designyourway.net/blog/wp-content/uploads/2018/11/pastel-background-goo-1250x834.jpg"); */
+    background-image:url("https://wallpapercave.com/wp/wp2445825.jpg") ;
+    background-size: cover;
+    
+    
+}
+/* Set additional styling options for the columns */
+.column {
+float: left;
+}
+
+/* Set width length for the left, right and middle columns */
+.left {
+width: 12%;
+}
+
+.middle {
+    text-align: center;
+width: 75%;
+margin: 0px;
+}
+.container-fluid{
+    width:100%;
+    
+}
+
+.column .right {
+width: 12%;
+
+}
+
+.row:after {
+content: "";
+display: table;
+clear: both;
+}
+
+.card-body
+{background-color: transparent;
+border-radius: 5%;
+box-shadow: 5px 5px 10px gray;}
