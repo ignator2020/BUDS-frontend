@@ -4,6 +4,7 @@ import { AddstaffComponent } from './addstaff/addstaff.component';
 import { CookComponent } from './cook/cook.component';
 import { DriverComponent } from './driver/driver.component';
 import { HelperComponent } from './helper/helper.component';
+import { HomeLoginComponent } from './home-login/home-login.component';
 import { ImagecontainerComponent } from './imagecontainer/imagecontainer.component';
 import { InstituteHomeComponent } from './institute-home/institute-home.component';
 import { InstituteRegisterComponent } from './institute-register/institute-register.component';
